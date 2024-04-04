@@ -1,0 +1,9 @@
+<nav>
+  <h1>Sistema CRUD</h1>
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li *ngIf="isLoggedIn">
+      <a class="logout" routerLink="/" (click)="logout()">Sair</a>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+
+<form [formGroup]="usuarioForm" (ngSubmit)="logarUsuario()" class="login-form">
+    <h1>Login</h1>
+    <div class="form-container" [ngClass]="{ 'has-error': usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched }">
+        <label for="email">Email:</label>
+        <input formControlName="email" type="text" name="email" placeholder="Digite seu email" required autocomplete="off">
+        <div *ngIf="usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched" class="error-message">
+            <p>Campo obrigatório</p>
+        </div>
+    </div>
+    <div class="form-container" [ngClass]="{ 'has-error': usuarioForm.get('senha')?.invalid && usuarioForm.get('senha')?.touched }">
+        <label for="senha">Senha:</label>
+        <input formControlName="senha" type="password" name="senha" placeholder="Digite sua senha:" required>
+        <div *ngIf="usuarioForm.get('senha')?.invalid && usuarioForm.get('senha')?.touched" class="error-message">
+            <p>Campo obrigatório</p>
+        </div>
+    </div>
+    <p>Não tem uma conta? <a routerLink="/cadastrar">Cadastre-se agora!</a></p>
+    <input type="submit" value="Fazer login">
+</form>

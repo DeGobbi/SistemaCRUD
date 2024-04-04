@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<form [formGroup]="usuarioForm" (ngSubmit)="criarUsuario()" class="signup-form">
+    <h1>Cadastrar</h1>
+    <div class="form-container" [ngClass]="{ 'has-error': usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched }">
+        <label for="email">Email:</label>
+        <input formControlName="email" type="text" name="email" placeholder="Digite seu email" required autocomplete="off">
+        <div *ngIf="usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched" class="error-message">
+            <p>Email inválido.</p>
+        </div>
+    </div>
+    <div class="form-container" [ngClass]="{ 'has-error': usuarioForm.get('senha')?.invalid && usuarioForm.get('senha')?.touched }">
+        <label for="senha">Senha:</label>
+        <input formControlName="senha" type="password" name="senha" placeholder="Digite sua senha:" required minlength="5">
+        <div *ngIf="usuarioForm.get('senha')?.invalid && usuarioForm.get('senha')?.touched" class="error-message">
+            <p>Senha inválida (mínimo 5 caracteres).</p>
+        </div>
+    </div>
+    <div class="form-container" [ngClass]="{ 'has-error': usuarioForm.get('senhaConfirmacao')?.invalid && usuarioForm.get('senhaConfirmacao')?.touched }">
+        <label for="senhaConfirmacao">Confirmar senha:</label>
+        <input formControlName="senhaConfirmacao" type="password" name="senhaConfirmacao" placeholder="Digite sua senha novamente:" required>
+        <div *ngIf="usuarioForm.get('senhaConfirmacao')?.invalid && usuarioForm.get('senhaConfirmacao')?.touched" class="error-message">
+            <p>Confirmação de senha inválida.</p>
+        </div>
+    </div>
+    <input type="submit" value="Criar usuário">
+</form>
