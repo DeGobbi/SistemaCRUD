@@ -6,7 +6,7 @@ module.exports = class UsuarioController {
             const usuarios = await UsuarioService.listarUsuarios()
             res.status(200).json(usuarios)
         } catch (error) {
-            res.status(500).json({ error: error.message })
+            res.status(500).json(error.message)
         }
     }
     static async criar(req, res) {

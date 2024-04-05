@@ -39,7 +39,7 @@ export class LoginComponent {
 
   logarUsuario() {
     if (this.usuarioForm.invalid) {
-      this.toastr.error('Por favor, preencha todos os campos corretamente.', 'Erro ao logar')
+      this.toastr.error('Por favor, preencha todos os campos corretamente.', 'Erro ao logar:')
       return
     }
     this.usuarioService.logarUsuario(this.usuarioForm.value).subscribe(

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ClienteService } from '../../../services/cliente.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,20 +13,25 @@ import { Router } from '@angular/router';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  clientes: any[] = []; // Array de clientes
+  clientes: any[] = [];
 
   constructor(
     private router: Router, 
-    // private clienteService: ClienteService
+    private clienteService: ClienteService
     ) {}
 
-  ngOnInit(): void {
-    // Simulação: carregar clientes do serviço ao inicializar o componente
-    // this.clientes = this.clienteService.getClientes();
+  ngOnInit() {
+    this.clienteService.getClientes().subscribe(
+      (data: any) => {
+        this.clientes = data
+      },
+      (error: any) => {
+        console.log(error)
+      }
+    )
   }
 
   criarCliente() {
-    // Redirecionar para a página de criação de cliente
     this.router.navigate(['/criar-cliente']);
   }
 

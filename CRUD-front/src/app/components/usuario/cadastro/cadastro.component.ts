@@ -45,13 +45,13 @@ export class CadastroComponent {
 
   criarUsuario() {
     if (this.usuarioForm.invalid) {
-      this.toastr.error('Por favor, preencha todos os campos corretamente.', 'Erro ao criar usuário')
+      this.toastr.error('Por favor, preencha todos os campos corretamente.', 'Erro ao criar usuário:')
       return
     }
     
     const { senha, senhaConfirmacao } = this.usuarioForm.value;
     if (senha !== senhaConfirmacao) {
-      this.toastr.error('As senhas devem estar compatíveis', 'Erro ao criar usuário');
+      this.toastr.error('As senhas devem estar compatíveis', 'Erro ao criar usuário:');
       return;
     }
 
@@ -61,7 +61,7 @@ export class CadastroComponent {
         this.router.navigate(['/login']);
       },
       (error) => {
-        this.toastr.error(error.error, 'Erro ao criar usuário');
+        this.toastr.error(error.error, 'Erro ao criar usuário:');
         this.esvaziarInputs()
       }
     );

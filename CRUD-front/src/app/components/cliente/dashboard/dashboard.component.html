@@ -12,14 +12,14 @@
     </thead>
     <tbody>
       <tr *ngFor="let cliente of clientes" (click)="verDetalhesCliente(cliente.id)">
-        <td>{{ cliente.razaoSocial }}</td>
+        <td>{{ cliente.razao_social }}</td>
         <td>{{ cliente.natureza }}</td>
-        <td>{{ cliente.cnpj }}</td>
-        <td>{{ cliente.cpf }}</td>
+        <td>{{ cliente.pj_cnpj }}</td>
+        <td>{{ cliente.pf_cpf }}</td>
         <td>{{ cliente.telefone }}</td>
       </tr>
     </tbody>
   </table>
-  <button class="btn-create" (click)="criarCliente()">Criar Cliente</button>
+  <button class="btn-create" (click)="criarCliente()">Adicionar Cliente</button>
 
 </div>
