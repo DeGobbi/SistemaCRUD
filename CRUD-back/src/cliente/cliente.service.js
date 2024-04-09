@@ -14,6 +14,23 @@ module.exports = class ClienteService {
         }
     }
 
+    static async listarCliente(id, UsuarioId) {
+        if (!UsuarioId)
+            throw new Error('Usuário não encontrado');
+        if (!id)
+            throw new Error('Cliente não encontrado');
+        try {
+            const cliente = await Cliente.findOne({
+                where: { id }
+            })
+            if(UsuarioId != cliente.UsuarioId)
+                throw new Error('O cliente não pertence a este usuário')
+            return cliente
+        } catch (error) {
+            throw new Error(error.message)
+        }
+    }
+
     static async criarCliente(cliente) {
         if(!cliente) {
             throw new Error('Sem dados do cliente!');

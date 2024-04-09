@@ -3,7 +3,12 @@ const ClienteService = require('./cliente.service')
 module.exports = class ClienteController {
     static async listar(req, res) {
         try {
-            const {usuarioId} = req.query
+            const {usuarioId, clienteId} = req.query
+            if(clienteId) {
+                const cliente = await ClienteService.listarCliente(clienteId, usuarioId)
+                res.status(200).json(cliente)
+                return
+            }
             const clientes = await ClienteService.listarClientes(usuarioId)
             res.status(200).json(clientes)
         } catch (error) {
