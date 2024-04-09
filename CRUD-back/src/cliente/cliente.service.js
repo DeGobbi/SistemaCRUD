@@ -21,9 +21,9 @@ module.exports = class ClienteService {
             throw new Error('Cliente não encontrado');
         try {
             const cliente = await Cliente.findOne({
-                where: { id }
+                where: { id, UsuarioId }
             })
-            if(UsuarioId != cliente.UsuarioId)
+            if(!cliente)
                 throw new Error('O cliente não pertence a este usuário')
             return cliente
         } catch (error) {
@@ -31,7 +31,7 @@ module.exports = class ClienteService {
         }
     }
 
-    static async criarCliente(cliente) {
+    static async criarCliente(cliente, UsuarioId) {
         if(!cliente) {
             throw new Error('Sem dados do cliente!');
         }
@@ -42,8 +42,8 @@ module.exports = class ClienteService {
                 pj_cnpj,
                 pf_cpf,
                 telefone
-            } = cliente.clienteData
-            const UsuarioId = cliente.UsuarioId
+            } = cliente
+
             const novoCliente = await Cliente.create({
                 razao_social,
                 natureza,
@@ -55,6 +55,36 @@ module.exports = class ClienteService {
                 UsuarioId,
             })
             return novoCliente
+        } catch (error) {
+            throw new Error(error.message)
+        }
+    }
+
+    static async editarCliente(cliente, id, UsuarioId) {
+        if(!cliente) {
+            throw new Error('Sem dados do cliente!');
+        }
+        try {
+            const {
+                razao_social,
+                natureza,
+                pj_cnpj,
+                pf_cpf,
+                telefone
+            } = cliente
+
+            const clienteEditado = await Cliente.update({
+                razao_social,
+                natureza,
+                pj_cnpj,
+                pf_cpf,
+                telefone,
+                log_atualizacao_usuario_id: UsuarioId,
+            }, { where: {
+                id,
+                UsuarioId
+            }})
+            return clienteEditado
         } catch (error) {
             throw new Error(error.message)
         }
