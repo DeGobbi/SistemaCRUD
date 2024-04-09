@@ -1,0 +1,87 @@
+.detalhes-cliente-container {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 2.5em;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.detalhes-cliente-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.details {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.details p {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.75em;
+    border-radius: 0.75em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.details strong {
+    margin-bottom: 0.5em;
+}
+
+.details span {
+    padding-top: 0.5em;
+    border-top: solid 1px #ccc;
+}
+
+.botoes-acao {
+    text-align: center;
+}
+
+.botoes-acao button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button i {
+    margin-right: 1em;
+}
+
+/* .botoes-acao button:hover {
+    background-color: #388bff;
+} */
+
+.btn-back {
+    background-color: #fff;
+    color: #4da9ff;
+    border: solid 1px #4da9ff;
+}
+
+.btn-edit {
+    background-color: #4da9ff;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-edit:hover {
+    background-color: #388bff;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #cf172a;
+}

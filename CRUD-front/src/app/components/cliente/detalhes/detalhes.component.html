@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<div class="detalhes-cliente-container">
+    <h2>Detalhes do Cliente</h2>
+    <div class="details">
+        <p><strong>Razão Social</strong><span>{{ cliente.razao_social }}</span></p>
+        <p><strong>Natureza</strong><span>{{ cliente.natureza }}</span></p>
+        <p><strong>CNPJ</strong><span>{{ cliente.pj_cnpj }}</span></p>
+        <p><strong>CPF</strong><span>{{ cliente.pf_cpf }}</span></p>
+        <p><strong>Telefone</strong><span>{{ cliente.telefone }}</span></p>
+    </div>
+    <div class="botoes-acao">
+      <button class="btn-back" routerLink="/">Voltar</button>
+      <button class="btn-edit" (click)="editarCliente(cliente.id)"><i class="fas fa-edit"></i>Editar</button>
+      <button class="btn-delete" (click)="excluirCliente()"><i class="fas fa-trash"></i>Excluir</button>
+    </div>
+</div>
+  

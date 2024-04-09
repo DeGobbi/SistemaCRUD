@@ -5,6 +5,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -26,13 +27,23 @@ export class CadastroComponent {
     private usuarioService: UsuarioService,
     private router: Router,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) {
     this.usuarioForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(5)]],
       senhaConfirmacao: ['', Validators.required]
     });
+  }
+
+  ngOnInit() {
+    this.authService.isLoggedIn().subscribe(
+      () => {
+        this.router.navigate(['/'])
+      },
+      (error: any) => {}
+    );
   }
 
   esvaziarInputs() {

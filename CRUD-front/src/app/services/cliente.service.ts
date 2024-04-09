@@ -28,6 +28,18 @@ export class ClienteService {
     );
   }
 
+  getCliente(clienteId: string): Observable<any> {
+    return this.authService.isLoggedIn().pipe(
+      switchMap((data: any) => {
+        if (data && data.id) {
+          return this.http.get<any>(`http://localhost:3000/clientes?usuarioId=${data.id}&clienteId=${clienteId}`, { withCredentials: true });
+        } else {
+          return of(null); // Ou retorne throwError('Erro de autenticação') se preferir lançar um erro
+        }
+      })
+    );
+  }
+
   criarCliente(clienteData: any): Observable<any> {
     return this.authService.isLoggedIn().pipe(
       switchMap((data: any) => {

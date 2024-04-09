@@ -1,9 +1,9 @@
 <nav>
   <h1>Sistema CRUD</h1>
   <ul>
-    <li><a routerLink="/">Home</a></li>
+    <li><a class="home" routerLink="/"><i class="fas fa-home"></i>Home</a></li>
     <li *ngIf="isLoggedIn">
-      <a class="logout" routerLink="/" (click)="logout()">Sair</a>
+      <a class="logout" routerLink="/" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Sair</a>
     </li>
   </ul>
 </nav>

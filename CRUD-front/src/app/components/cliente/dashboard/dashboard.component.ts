@@ -36,7 +36,6 @@ export class DashboardComponent {
   }
 
   verDetalhesCliente(clienteId: number) {
-    // Redirecionar para a página de detalhes do cliente com o ID específico
     this.router.navigate(['/detalhes-cliente', clienteId]);
   }
 }

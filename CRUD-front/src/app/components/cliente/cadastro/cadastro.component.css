@@ -38,3 +38,13 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #388bff;
 }
+
+button {
+  margin-right: 1em;
+  padding: 10px;
+  background-color: #fff;
+  border: solid 1px #4da9ff;
+  color: #4da9ff;
+  border-radius: 4px;
+  cursor: pointer;
+}

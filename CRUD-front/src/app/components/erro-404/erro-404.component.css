@@ -1,0 +1,28 @@
+.error-404-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.error-404-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.error-404-container p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.back-button {
+    padding: 10px 20px;
+    background-color: #4da9ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #388bff;
+}

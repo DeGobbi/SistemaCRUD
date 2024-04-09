@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ClienteService } from '../../../services/cliente.service';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -13,7 +13,8 @@ import { ToastrService } from 'ngx-toastr';
     CommonModule,
     FormsModule,
     NavbarComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css'

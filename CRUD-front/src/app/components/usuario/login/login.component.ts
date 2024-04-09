@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { UsuarioService } from '../../../services/usuario.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -29,12 +30,22 @@ export class LoginComponent {
     private cookieService: CookieService,
     private router: Router,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) {
     this.usuarioForm = this.formBuilder.group({
       email: ['', [Validators.required]],
       senha: ['', [Validators.required]]
     });
+  }
+
+  ngOnInit() {
+    this.authService.isLoggedIn().subscribe(
+      () => {
+        this.router.navigate(['/'])
+      },
+      (error: any) => {}
+    );
   }
 
   logarUsuario() {
