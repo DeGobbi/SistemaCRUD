@@ -34,4 +34,14 @@ module.exports = class ClienteController {
             res.status(500).json(error.message)
         }
     }
+
+    static async excluir(req, res) {
+        try {
+            const {clienteId} = req.query
+            const clienteExcluido = await ClienteService.excluirCliente(clienteId, req.user.id)
+            res.status(204).json(clienteExcluido)
+        } catch (error) {
+            res.status(500).json(error.message)
+        }
+    }
 }

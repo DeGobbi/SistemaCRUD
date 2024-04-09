@@ -32,9 +32,12 @@ module.exports = class ClienteService {
     }
 
     static async criarCliente(cliente, UsuarioId) {
-        if(!cliente) {
+        if(!cliente)
             throw new Error('Sem dados do cliente!');
-        }
+
+        if(!UsuarioId)
+            throw new Error('Sem dados do usuário!');
+
         try {
             const {
                 razao_social,
@@ -61,9 +64,12 @@ module.exports = class ClienteService {
     }
 
     static async editarCliente(cliente, id, UsuarioId) {
-        if(!cliente) {
+        if(!cliente || !id)
             throw new Error('Sem dados do cliente!');
-        }
+
+        if(!UsuarioId)
+            throw new Error('Sem dados do usuário!');
+
         try {
             const {
                 razao_social,
@@ -85,6 +91,20 @@ module.exports = class ClienteService {
                 UsuarioId
             }})
             return clienteEditado
+        } catch (error) {
+            throw new Error(error.message)
+        }
+    }
+
+    static async excluirCliente(id, UsuarioId) {
+        if(!id)
+            throw new Error('Sem dados do cliente!');
+        if(!UsuarioId)
+            throw new Error('Sem dados do usuário!');
+
+        try {
+            const clienteExcluido = await Cliente.destroy({ where: { id, UsuarioId } })
+            return clienteExcluido
         } catch (error) {
             throw new Error(error.message)
         }
