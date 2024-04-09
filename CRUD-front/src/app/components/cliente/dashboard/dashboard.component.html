@@ -1,5 +1,8 @@
 <div class="dashboard">
-  <h1>Clientes</h1>
+  <div class="head">
+    <h1>Clientes</h1>
+    <button class="btn-create" (click)="criarCliente()"><i class="fas fa-plus"></i>Adicionar Cliente</button>
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -20,6 +23,4 @@
       </tr>
     </tbody>
   </table>
-  <button class="btn-create" (click)="criarCliente()"><i class="fas fa-plus"></i>Adicionar Cliente</button>
-
 </div>

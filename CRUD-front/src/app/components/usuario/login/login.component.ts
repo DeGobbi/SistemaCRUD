@@ -41,10 +41,14 @@ export class LoginComponent {
 
   ngOnInit() {
     this.authService.isLoggedIn().subscribe(
-      () => {
-        this.router.navigate(['/'])
+      (data: any) => {
+        if(data) {
+          this.router.navigate(['/'])
+        }
       },
-      (error: any) => {}
+      (error: any) => {
+        this.authService.logout()
+      }
     );
   }
 
@@ -55,6 +59,7 @@ export class LoginComponent {
     }
     this.usuarioService.logarUsuario(this.usuarioForm.value).subscribe(
       (data: any) => {
+        this.cookieService.delete('Bearer')
         this.cookieService.set('Bearer', data.token);
         this.router.navigate(['/'])
         this.toastr.success('Logado com sucesso!');

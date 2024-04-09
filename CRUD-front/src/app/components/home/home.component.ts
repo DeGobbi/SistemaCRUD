@@ -31,7 +31,6 @@ export class HomeComponent {
       },
       (error: any) => {
         this.isLoggedIn = false;
-        this.authService.logout()
       }
     );
   }

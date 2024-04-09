@@ -1,15 +1,21 @@
 .dashboard {
     margin: 2.5em;
 }
-  
+
+.head {
+  display: flex;
+  align-items: center;
+}
+
 h1 {
   font-size: 24px;
   margin-bottom: 20px;
 }
   
 .btn-create {
+  margin-bottom: 1.5em;
   padding: 10px 20px;
-  margin-top: 1.5em;
+  margin-left: 1.5em;
   background-color: #4da9ff;
   border: none;
   border-radius: 5px;

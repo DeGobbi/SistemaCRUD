@@ -28,7 +28,6 @@ export class NavbarComponent {
       },
       (error: any) => {
         this.isLoggedIn = false;
-        this.authService.logout()
       }
     );
   }

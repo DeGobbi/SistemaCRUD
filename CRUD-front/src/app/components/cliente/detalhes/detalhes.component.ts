@@ -39,6 +39,7 @@ export class DetalhesComponent {
         this.cliente = data;
       },
       (error: any) => {
+        console.log(error)
         this.router.navigate(['/'])
         this.toastr.error('Cliente não encontrado', 'Erro ao buscar cliente:')
       }
@@ -46,8 +47,7 @@ export class DetalhesComponent {
   }
 
   editarCliente(id: any) {
-    // Navegar para a página de edição do cliente
-    // this.router.navigate(['/editar-cliente', this.clienteId]);
+    this.router.navigate(['/editar-cliente', id]);
   }
 
   excluirCliente() {

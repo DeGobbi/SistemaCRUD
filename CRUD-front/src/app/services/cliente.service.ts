@@ -20,7 +20,7 @@ export class ClienteService {
     return this.authService.isLoggedIn().pipe(
       switchMap((data: any) => {
         if (data && data.id) {
-          return this.http.get<any>(`http://localhost:3000/clientes?usuarioId=${data.id}`, { withCredentials: true });
+          return this.http.get<any>(`http://localhost:3000/clientes`, { withCredentials: true });
         } else {
           return of(null); // Ou retorne throwError('Erro de autenticação') se preferir lançar um erro
         }
@@ -32,7 +32,7 @@ export class ClienteService {
     return this.authService.isLoggedIn().pipe(
       switchMap((data: any) => {
         if (data && data.id) {
-          return this.http.get<any>(`http://localhost:3000/clientes?usuarioId=${data.id}&clienteId=${clienteId}`, { withCredentials: true });
+          return this.http.get<any>(`http://localhost:3000/clientes?clienteId=${clienteId}`, { withCredentials: true });
         } else {
           return of(null); // Ou retorne throwError('Erro de autenticação') se preferir lançar um erro
         }
@@ -44,7 +44,19 @@ export class ClienteService {
     return this.authService.isLoggedIn().pipe(
       switchMap((data: any) => {
         if (data && data.id) {
-          return this.http.post<any>('http://localhost:3000/clientes', {clienteData, UsuarioId: data.id}, { withCredentials: true });
+          return this.http.post<any>('http://localhost:3000/clientes', clienteData, { withCredentials: true });
+        } else {
+          return of(null); // Ou retorne throwError('Erro de autenticação') se preferir lançar um erro
+        }
+      })
+    );
+  }
+
+  editarCliente(clienteData: any, clienteId: any): Observable<any> {
+    return this.authService.isLoggedIn().pipe(
+      switchMap((data: any) => {
+        if (data && data.id) {
+          return this.http.put<any>('http://localhost:3000/clientes', { clienteData, clienteId }, { withCredentials: true });
         } else {
           return of(null); // Ou retorne throwError('Erro de autenticação') se preferir lançar um erro
         }

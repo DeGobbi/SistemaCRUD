@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<form [formGroup]="clienteForm" (submit)="editarCliente()">
+    <h2>Editar</h2>
+    <div class="form-container">
+    <label for="razao_social">Razão Social:</label>
+    <input formControlName="razao_social" type="text" name="razao_social" placeholder="Digite a razão social" required autocomplete="off">
+  </div>
+  <div class="form-container">
+    <label for="natureza">Natureza:</label>
+    <input formControlName="natureza" type="text" name="natureza" placeholder="Digite a natureza" required autocomplete="off">
+  </div>
+  <div class="form-container">
+    <label for="pj_cnpj">CNPJ:</label>
+    <input formControlName="pj_cnpj" type="text" name="pj_cnpj" placeholder="Digite o CNPJ" required autocomplete="off">
+  </div>
+  <div class="form-container">
+    <label for="pf_cpf">CPF:</label>
+    <input formControlName="pf_cpf" type="text" name="pf_cpf" placeholder="Digite o CPF" required autocomplete="off">
+  </div>
+  <div class="form-container">
+    <label for="telefone">Telefone:</label>
+    <input formControlName="telefone" type="text" name="telefone" placeholder="Digite o telefone" required autocomplete="off">
+  </div>
+  <input type="button" class="btn-back" (click)="voltar(clienteId)" value="Detalhes">
+  <input type="submit" value="Editar">
+</form>
