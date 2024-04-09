@@ -83,7 +83,7 @@ export class EdicaoComponent {
         this.router.navigate([`/detalhes-cliente/${this.clienteId}`]);
       },
       (error: any) => {
-        this.toastr.error(error, 'Erro ao editar cliente:')
+        this.toastr.error('Erro ao editar cliente')
         this.router.navigate([`/detalhes-cliente/${this.clienteId}`]);
       }
     );

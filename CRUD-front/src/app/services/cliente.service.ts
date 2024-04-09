@@ -63,4 +63,16 @@ export class ClienteService {
       })
     );
   }
+
+  excluirCliente(clienteId: any): Observable<any> {
+    return this.authService.isLoggedIn().pipe(
+      switchMap((data: any) => {
+        if (data && data.id) {
+          return this.http.delete<any>(`http://localhost:3000/clientes?clienteId=${clienteId}`, { withCredentials: true });
+        } else {
+          return of(null); // Ou retorne throwError('Erro de autenticação') se preferir lançar um erro
+        }
+      })
+    );
+  }
 }

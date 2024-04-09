@@ -26,15 +26,15 @@ export class DetalhesComponent {
     ) { }
 
   ngOnInit() {
-    const clienteId = this.route.snapshot.params['id']
+    this.clienteId = this.route.snapshot.params['id']
 
-    if(clienteId === '0') {
+    if(this.clienteId === '0') {
       this.router.navigate(['/'])
       this.toastr.error('Cliente não encontrado', 'Erro ao buscar cliente:')
       return
     }
 
-    this.clienteService.getCliente(clienteId).subscribe(
+    this.clienteService.getCliente(this.clienteId).subscribe(
       (data: any) => {
         this.cliente = data;
       },
@@ -46,11 +46,19 @@ export class DetalhesComponent {
     );
   }
 
-  editarCliente(id: any) {
-    this.router.navigate(['/editar-cliente', id]);
+  editarCliente() {
+    this.router.navigate(['/editar-cliente', this.clienteId]);
   }
 
   excluirCliente() {
-    // Aqui você pode implementar a lógica para excluir o cliente
-  }
+    this.clienteService.excluirCliente(this.clienteId).subscribe(
+      (data: any) => {
+        this.toastr.success('Cliente excluído com sucesso!')
+        this.router.navigate(['/']);
+      },
+      (error: any) => {
+        this.toastr.error('Erro ao excluir cliente')
+        this.router.navigate(['/']);
+      }
+  )}
 }

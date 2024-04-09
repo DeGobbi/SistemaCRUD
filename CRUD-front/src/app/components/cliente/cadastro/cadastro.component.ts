@@ -49,7 +49,8 @@ export class CadastroComponent {
         this.router.navigate(['/']);
       },
       (error: any) => {
-        this.toastr.error(error, 'Erro ao criar cliente:')
+        this.router.navigate(['/']);
+        this.toastr.error('Erro ao criar cliente')
       }
     );
   }

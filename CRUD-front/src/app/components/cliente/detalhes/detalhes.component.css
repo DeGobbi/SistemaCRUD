@@ -1,5 +1,5 @@
 .detalhes-cliente-container {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
     margin-top: 2.5em;
     padding: 20px;
@@ -55,10 +55,6 @@
 button i {
     margin-right: 1em;
 }
-
-/* .botoes-acao button:hover {
-    background-color: #388bff;
-} */
 
 .btn-back {
     background-color: #fff;
