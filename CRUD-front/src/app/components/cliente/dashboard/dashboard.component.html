@@ -1,26 +1,34 @@
 <div class="dashboard">
+  <h1>Clientes</h1>
   <div class="head">
-    <h1>Clientes</h1>
     <button class="btn-create" (click)="criarCliente()"><i class="fas fa-plus"></i>Adicionar Cliente</button>
+    <div class="ordenacao-container">
+      <button (click)="ordenarPorNomeAsc()"><i class="fas fa-sort-alpha-down"></i> Ordem alfabética A-Z</button>
+      <button (click)="ordenarPorNomeDesc()"><i class="fas fa-sort-alpha-up"></i> Ordem alfabética Z-A</button>
+      <button (click)="ordenarPorDataMaisRecente()"><i class="fas fa-calendar-alt"></i> Mais recentes primeiro</button>
+      <button (click)="ordenarPorDataMaisAntiga()"><i class="fas fa-calendar-alt"></i> Mais antigos primeiro</button>
+    </div>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Razão Social</th>
-        <th>Natureza</th>
-        <th>CNPJ</th>
-        <th>CPF</th>
-        <th>Telefone</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cliente of clientes" (click)="verDetalhesCliente(cliente.id)">
-        <td>{{ cliente.razao_social }}</td>
-        <td>{{ cliente.natureza }}</td>
-        <td>{{ cliente.pj_cnpj }}</td>
-        <td>{{ cliente.pf_cpf }}</td>
-        <td>{{ cliente.telefone }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Razão Social</th>
+          <th>Natureza</th>
+          <th>CNPJ</th>
+          <th>CPF</th>
+          <th>Telefone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes" (click)="verDetalhesCliente(cliente.id)">
+          <td>{{ cliente.razao_social }}</td>
+          <td>{{ cliente.natureza }}</td>
+          <td>{{ cliente.pj_cnpj }}</td>
+          <td>{{ cliente.pf_cpf }}</td>
+          <td>{{ cliente.telefone }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

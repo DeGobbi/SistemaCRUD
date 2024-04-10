@@ -38,4 +38,20 @@ export class DashboardComponent {
   verDetalhesCliente(clienteId: number) {
     this.router.navigate(['/detalhes-cliente', clienteId]);
   }
+
+  ordenarPorNomeAsc() {
+    this.clientes.sort((a, b) => a.razao_social.localeCompare(b.razao_social));
+  }
+
+  ordenarPorNomeDesc() {
+    this.clientes.sort((a, b) => b.razao_social.localeCompare(a.razao_social));
+  }
+
+  ordenarPorDataMaisRecente() {
+    this.clientes.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  }
+  
+  ordenarPorDataMaisAntiga() {
+    this.clientes.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+  }
 }

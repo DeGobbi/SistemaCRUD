@@ -62,6 +62,10 @@ button i {
     border: solid 1px #4da9ff;
 }
 
+.btn-back:hover {
+    color: #388bff;
+}
+
 .btn-edit {
     background-color: #4da9ff;
     color: #ffffff;
